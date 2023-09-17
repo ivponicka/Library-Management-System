@@ -4,7 +4,7 @@
 
 package com.mycompany.library.management.system;
 
-import com.mycompany.library.management.system.JFrame.SignUp;
+import com.mycompany.library.management.system.JFrame.SignupPage;
 
 /**
  *
