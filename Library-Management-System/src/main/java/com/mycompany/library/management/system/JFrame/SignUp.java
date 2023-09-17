@@ -55,7 +55,8 @@ public class SignUp extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -69,24 +70,34 @@ public class SignUp extends javax.swing.JFrame {
         txt_password = new app.bolivia.swing.JCTextField();
         rSMaterialButtonCircle1 = new rojerusan.RSMaterialButtonCircle();
         rSMaterialButtonCircle2 = new rojerusan.RSMaterialButtonCircle();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1010, 680));
+        setPreferredSize(new java.awt.Dimension(1010, 660));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Copperplate Gothic Light", 3, 34)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 153, 0));
-        jLabel3.setText("The Quantum Quill Library");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 21, 522, -1));
+        jLabel3.setFont(new java.awt.Font("Vivaldi", 1, 90)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(175, 132, 1));
+        jLabel3.setText("Library");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 570, 90));
 
-        jLabel4.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 48)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 153, 0));
-        jLabel4.setText("Welcome!");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 127, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ponic\\OneDrive\\Dokumenty\\Projekty Java\\Library-Management-System\\Library-Management-System\\src\\main\\java\\MyIcons\\books2.jpg")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 300, 650, 350));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 570, 620));
+        jLabel14.setFont(new java.awt.Font("Vivaldi", 1, 55)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(175, 132, 1));
+        jLabel14.setText("The Quantum Quill");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 570, 90));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 580, 630));
 
         jPanel2.setBackground(new java.awt.Color(253, 237, 189));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -102,7 +113,7 @@ public class SignUp extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 48)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 153, 0));
+        jLabel6.setForeground(new java.awt.Color(175, 132, 1));
         jLabel6.setText("Sign up");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
@@ -123,28 +134,28 @@ public class SignUp extends javax.swing.JFrame {
 
         txt_phone.setBackground(new java.awt.Color(253, 237, 189));
         txt_phone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, java.awt.Color.white));
-        txt_phone.setForeground(java.awt.Color.white);
+        txt_phone.setForeground(java.awt.Color.gray);
         txt_phone.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         txt_phone.setPlaceholder("your password");
         jPanel2.add(txt_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, -1, -1));
 
         txt_username.setBackground(new java.awt.Color(253, 237, 189));
         txt_username.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, java.awt.Color.white));
-        txt_username.setForeground(java.awt.Color.white);
+        txt_username.setForeground(java.awt.Color.gray);
         txt_username.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         txt_username.setPlaceholder("your username");
         jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
         txt_email.setBackground(new java.awt.Color(253, 237, 189));
         txt_email.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, java.awt.Color.white));
-        txt_email.setForeground(java.awt.Color.white);
+        txt_email.setForeground(java.awt.Color.gray);
         txt_email.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         txt_email.setPlaceholder("your e-mail address");
         jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
 
         txt_password.setBackground(new java.awt.Color(253, 237, 189));
         txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, java.awt.Color.white));
-        txt_password.setForeground(java.awt.Color.white);
+        txt_password.setForeground(java.awt.Color.gray);
         txt_password.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         txt_password.setPlaceholder("your password");
         jPanel2.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, -1, -1));
@@ -164,9 +175,21 @@ public class SignUp extends javax.swing.JFrame {
         });
         jPanel2.add(rSMaterialButtonCircle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 500, 220, 60));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 420, 630));
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\ponic\\OneDrive\\Dokumenty\\Projekty Java\\Library-Management-System\\Library-Management-System\\src\\main\\java\\icons\\phone.png")); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
 
-        setSize(new java.awt.Dimension(1033, 639));
+        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\ponic\\OneDrive\\Dokumenty\\Projekty Java\\Library-Management-System\\Library-Management-System\\src\\main\\java\\icons\\account.png")); // NOI18N
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\ponic\\OneDrive\\Dokumenty\\Projekty Java\\Library-Management-System\\Library-Management-System\\src\\main\\java\\icons\\email.png")); // NOI18N
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\ponic\\OneDrive\\Dokumenty\\Projekty Java\\Library-Management-System\\Library-Management-System\\src\\main\\java\\icons\\password.png")); // NOI18N
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 420, 640));
+
+        setSize(new java.awt.Dimension(1033, 628));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -210,13 +233,18 @@ public class SignUp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
