@@ -97,7 +97,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Vivaldi", 1, 90)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(175, 132, 1));
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Library");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 570, 90));
 
@@ -105,17 +105,16 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 300, 650, 350));
 
         jLabel14.setFont(new java.awt.Font("Vivaldi", 1, 55)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(175, 132, 1));
+        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
         jLabel14.setText("The Quantum Quill");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 570, 90));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 580, 630));
 
-        jPanel2.setBackground(new java.awt.Color(253, 237, 189));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 153, 0));
         jLabel2.setText("X");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -125,21 +124,21 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 30, 20));
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 153, 0));
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Password:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 48)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(175, 132, 1));
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Log in");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(204, 153, 0));
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Username:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
 
-        txt_username.setBackground(new java.awt.Color(253, 237, 189));
+        txt_username.setBackground(new java.awt.Color(204, 204, 204));
         txt_username.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, java.awt.Color.white));
         txt_username.setForeground(java.awt.Color.gray);
         txt_username.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
@@ -151,14 +150,14 @@ public class LoginPage extends javax.swing.JFrame {
         });
         jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
-        txt_password.setBackground(new java.awt.Color(253, 237, 189));
+        txt_password.setBackground(new java.awt.Color(204, 204, 204));
         txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, java.awt.Color.white));
         txt_password.setForeground(java.awt.Color.gray);
         txt_password.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         txt_password.setPlaceholder("your password");
         jPanel2.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
 
-        rSMaterialButtonCircle1.setBackground(new java.awt.Color(204, 153, 0));
+        rSMaterialButtonCircle1.setBackground(new java.awt.Color(51, 51, 51));
         rSMaterialButtonCircle1.setText("Log in");
         rSMaterialButtonCircle1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
         rSMaterialButtonCircle1.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +167,7 @@ public class LoginPage extends javax.swing.JFrame {
         });
         jPanel2.add(rSMaterialButtonCircle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 220, 70));
 
-        rSMaterialButtonCircle2.setBackground(new java.awt.Color(209, 184, 127));
+        rSMaterialButtonCircle2.setBackground(new java.awt.Color(102, 102, 102));
         rSMaterialButtonCircle2.setText("Sign up");
         rSMaterialButtonCircle2.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 18)); // NOI18N
         rSMaterialButtonCircle2.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +184,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 153, 0));
+        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("into your account");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
 
