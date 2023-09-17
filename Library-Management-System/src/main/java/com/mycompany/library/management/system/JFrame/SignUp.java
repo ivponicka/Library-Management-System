@@ -5,6 +5,7 @@ import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -43,7 +44,60 @@ public class SignUp extends javax.swing.JFrame {
             System.out.println("FALIRIRIR");
             System.out.println(e.getMessage());
         }
+     
     }
+    
+        public boolean validationSignup(){
+        String name = txt_username.getText();
+        String email = txt_email.getText();
+        String password = txt_password.getText();
+        String contact = txt_phone.getText();
+      
+        if(name.equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a valid name");
+            return false;
+        } 
+             
+        if(email.equals("") || !email.matches("^.+@.+\\..+$")){
+            JOptionPane.showMessageDialog(this, "Please enter a valid email");
+             return false;
+        } 
+             
+        if(password.equals("") ){
+            JOptionPane.showMessageDialog(this, "Please enter a valid password");
+             return false;
+        } 
+             
+        if(contact.equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a valid phone number");
+             return false;
+        } 
+        return true;
+    } 
+        
+        public boolean checkDuplicateUsers(){
+             String name = txt_username.getText();
+             boolean alreadyExists = false;
+             try {
+                 Connection con = DBConnection.getConnection();
+                 PreparedStatement statement = con.prepareStatement("select * from users where name=?");
+                 statement.setString(1, name);
+                 ResultSet result = statement.executeQuery();
+                 if(result.next()){
+                 alreadyExists = true;
+                 } else {
+                     alreadyExists = false;
+                 }
+                 
+             }
+             catch (Exception e){
+             e.getMessage();
+             System.out.println(e.getMessage());
+             }
+             return alreadyExists;
+        }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,9 +128,11 @@ public class SignUp extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1010, 680));
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1010, 660));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -102,10 +158,15 @@ public class SignUp extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(253, 237, 189));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 153, 0));
-        jLabel2.setText("Create a new account");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+        jLabel2.setText("X");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 30, 20));
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 153, 0));
@@ -144,6 +205,11 @@ public class SignUp extends javax.swing.JFrame {
         txt_username.setForeground(java.awt.Color.gray);
         txt_username.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         txt_username.setPlaceholder("your username");
+        txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_usernameFocusLost(evt);
+            }
+        });
         jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
         txt_email.setBackground(new java.awt.Color(253, 237, 189));
@@ -163,7 +229,7 @@ public class SignUp extends javax.swing.JFrame {
         rSMaterialButtonCircle1.setBackground(new java.awt.Color(204, 153, 0));
         rSMaterialButtonCircle1.setText("Log in");
         rSMaterialButtonCircle1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
-        jPanel2.add(rSMaterialButtonCircle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 560, 190, 40));
+        jPanel2.add(rSMaterialButtonCircle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 570, 190, 40));
 
         rSMaterialButtonCircle2.setBackground(new java.awt.Color(204, 153, 0));
         rSMaterialButtonCircle2.setText("Sign up");
@@ -173,7 +239,7 @@ public class SignUp extends javax.swing.JFrame {
                 rSMaterialButtonCircle2ActionPerformed(evt);
             }
         });
-        jPanel2.add(rSMaterialButtonCircle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 500, 220, 60));
+        jPanel2.add(rSMaterialButtonCircle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 220, 60));
 
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\ponic\\OneDrive\\Dokumenty\\Projekty Java\\Library-Management-System\\Library-Management-System\\src\\main\\java\\icons\\phone.png")); // NOI18N
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
@@ -187,15 +253,39 @@ public class SignUp extends javax.swing.JFrame {
         jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\ponic\\OneDrive\\Dokumenty\\Projekty Java\\Library-Management-System\\Library-Management-System\\src\\main\\java\\icons\\password.png")); // NOI18N
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 153, 0));
+        jLabel4.setText("Create a new account");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 420, 640));
 
-        setSize(new java.awt.Dimension(1033, 628));
+        setSize(new java.awt.Dimension(1019, 621));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSMaterialButtonCircle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonCircle2ActionPerformed
-        insertSignupDetails();
+           if(validationSignup() == true){
+               if(checkDuplicateUsers() == false){
+                     insertSignupDetails();
+               } else {
+                   JOptionPane.showMessageDialog(this, "This username already exists.");
+               }
+         
+           }
+        
     }//GEN-LAST:event_rSMaterialButtonCircle2ActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    
+        System.exit(0);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void txt_usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usernameFocusLost
+       if(checkDuplicateUsers() == true){
+           JOptionPane.showMessageDialog(this, "This username already exists.");
+       }
+    }//GEN-LAST:event_txt_usernameFocusLost
 
     /**
      * @param args the command line arguments
@@ -241,6 +331,7 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
