@@ -33,6 +33,21 @@
     <artifactId>mysql-connector-java</artifactId>
     <version>8.0.11</version>
 </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>RSTableMetro</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>groupID</groupId>
+            <artifactId>artifactID</artifactId>
+            <version>1.0.</version>
+        </dependency>
+        <dependency>
+            <groupId>groupID2</groupId>
+            <artifactId>artifactID2</artifactId>
+            <version>1.0.</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
