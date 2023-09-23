@@ -17,10 +17,11 @@ import org.jfree.data.general.DefaultPieDataset;
  * @author ponic
  */
 public class HomePage extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form HomePage
      */
+   
     public HomePage() {
         initComponents();
         showPieChart();

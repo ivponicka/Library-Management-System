@@ -20,11 +20,11 @@ import javax.swing.table.TableModel;
  * @author ponic
  */
 public class ManageBooks extends javax.swing.JFrame {
-    
+
     int bookID;
     String bookName;
     String bookAuthor;
-   int bookQuantity;
+    int bookQuantity;
     DefaultTableModel model;
 
     /**
@@ -35,96 +35,115 @@ public class ManageBooks extends javax.swing.JFrame {
         displayBooks();
     }
 
-    
-    public void displayBooks(){
-  
+    public void displayBooks() {
+
         try {
-         Connection con = DBConnection.getConnection(); 
-        Statement statement = con.createStatement();
-        ResultSet results = statement.executeQuery("select * from book_details");
-        
-        while(results.next()){
-            String bookID = results.getString("book_id");
-            String bookTitle = results.getString("book_name");
-            String bookAuthor = results.getString("book_author");
-            String bookQuantity = results.getString("quantity");
-            
-            Object[] obj = {bookID, bookTitle, bookAuthor, bookQuantity};
-            model = (DefaultTableModel)books_details_table.getModel();
-            model.addRow(obj);
+            Connection con = DBConnection.getConnection();
+            Statement statement = con.createStatement();
+            ResultSet results = statement.executeQuery("select * from book_details");
+
+            while (results.next()) {
+                String bookID = results.getString("book_id");
+                String bookTitle = results.getString("book_name");
+                String bookAuthor = results.getString("book_author");
+                String bookQuantity = results.getString("quantity");
+
+                Object[] obj = {bookID, bookTitle, bookAuthor, bookQuantity};
+                model = (DefaultTableModel) books_details_table.getModel();
+                model.addRow(obj);
+            }
+
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
         }
-        
-        } catch (SQLException e){
-        System.out.print(e.getMessage());
-        }
-        
+
     }
-    
-    public boolean addBook(){
+
+    public boolean addBook() {
         boolean isAdded = false;
         bookID = Integer.parseInt(book_id.getText());
         bookName = book_name.getText();
         bookAuthor = book_author.getText();
         bookQuantity = Integer.parseInt(quantity.getText());
-        
-        try{
+
+        try {
             Connection con = DBConnection.getConnection();
-            String sql =  "insert into book_details values(?,?,?,?)";
+            String sql = "insert into book_details values(?,?,?,?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, bookID);
             statement.setString(2, bookName);
             statement.setString(3, bookAuthor);
             statement.setInt(4, bookQuantity);
-            
+
             int rowCount = statement.executeUpdate();
-            
-            if(rowCount >0){
+
+            if (rowCount > 0) {
                 isAdded = true;
-            } else{
+            } else {
                 isAdded = false;
             }
-            
-        } catch (SQLException e){
+
+        } catch (SQLException e) {
             System.out.print(e);
         }
-        
+
         return isAdded;
     }
-    
-    public boolean updateBook(){
+
+    public boolean updateBook() {
         boolean isUpdated = false;
         bookID = Integer.parseInt(book_id.getText());
         bookName = book_name.getText();
         bookAuthor = book_author.getText();
         bookQuantity = Integer.parseInt(quantity.getText());
-        
+
         try {
             Connection con = DBConnection.getConnection();
             String sql = "update book_details set book_name=?, book_author=?, quantity=? where book_id=?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, bookName);
             statement.setString(2, bookAuthor);
-            statement.setInt(3  , bookQuantity);
+            statement.setInt(3, bookQuantity);
             statement.setInt(4, bookID);
-            
-           int rowCount = statement.executeUpdate();
-           if(rowCount>0){
-               isUpdated = true;
-           } else {
-               isUpdated = false;
-           }
-        } catch (SQLException e){
+
+            int rowCount = statement.executeUpdate();
+            if (rowCount > 0) {
+                isUpdated = true;
+            } else {
+                isUpdated = false;
+            }
+        } catch (SQLException e) {
             System.out.print(e);
         }
         return isUpdated;
     }
-    
- 
-    
-    public void clearTable(){
+
+    public boolean deleteBook() {
+        boolean isDeleted = false;
+        bookID = Integer.parseInt(book_id.getText());
+
+        try {
+            Connection con = DBConnection.getConnection();
+            String sql = "delete from book_details where book_id=?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, bookID);
+            int rowCount = statement.executeUpdate();
+            if (rowCount > 0) {
+                isDeleted = true;
+            } else {
+                isDeleted = false;
+            }
+            } catch (SQLException e) {
+            System.out.print(e);
+        }
+        return isDeleted;
+    }
+
+    public void clearTable() {
         DefaultTableModel model = (DefaultTableModel) books_details_table.getModel();
-       model.setRowCount(0);
-    } 
+        model.setRowCount(0);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -412,18 +431,24 @@ public class ManageBooks extends javax.swing.JFrame {
     }//GEN-LAST:event_book_authorFocusLost
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        if(addBook() == true){
-        JOptionPane.showMessageDialog(this, "Added a new book");
-        clearTable();
-        displayBooks();
+
+        if (addBook() == true) {
+            JOptionPane.showMessageDialog(this, "Added a new book");
+            clearTable();
+            displayBooks();
         } else {
-        JOptionPane.showMessageDialog(this, "Book couldn't be added");
+            JOptionPane.showMessageDialog(this, "Book couldn't be added");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        if(deleteBook()==true){
+            JOptionPane.showMessageDialog(this, "The was book was deleted");
+            clearTable();
+            displayBooks();
+        } else {
+            JOptionPane.showMessageDialog(this, "The was book was deleted");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -440,13 +465,13 @@ public class ManageBooks extends javax.swing.JFrame {
     }//GEN-LAST:event_books_details_tableMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if(updateBook()==true){
+        if (updateBook() == true) {
             JOptionPane.showMessageDialog(this, "The book was updated");
-             clearTable();
+            clearTable();
             displayBooks();
         } else {
             JOptionPane.showMessageDialog(this, "The book couldn't be updated");
-          
+
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
