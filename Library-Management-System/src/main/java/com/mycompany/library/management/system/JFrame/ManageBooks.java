@@ -91,6 +91,36 @@ public class ManageBooks extends javax.swing.JFrame {
         return isAdded;
     }
     
+    public boolean updateBook(){
+        boolean isUpdated = false;
+        bookID = Integer.parseInt(book_id.getText());
+        bookName = book_name.getText();
+        bookAuthor = book_author.getText();
+        bookQuantity = Integer.parseInt(quantity.getText());
+        
+        try {
+            Connection con = DBConnection.getConnection();
+            String sql = "update book_details set book_name=?, book_author=?, quantity=? where book_id=?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, bookName);
+            statement.setString(2, bookAuthor);
+            statement.setInt(3  , bookQuantity);
+            statement.setInt(4, bookID);
+            
+           int rowCount = statement.executeUpdate();
+           if(rowCount>0){
+               isUpdated = true;
+           } else {
+               isUpdated = false;
+           }
+        } catch (SQLException e){
+            System.out.print(e);
+        }
+        return isUpdated;
+    }
+    
+ 
+    
     public void clearTable(){
         DefaultTableModel model = (DefaultTableModel) books_details_table.getModel();
        model.setRowCount(0);
@@ -410,7 +440,14 @@ public class ManageBooks extends javax.swing.JFrame {
     }//GEN-LAST:event_books_details_tableMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        if(updateBook()==true){
+            JOptionPane.showMessageDialog(this, "The book was updated");
+             clearTable();
+            displayBooks();
+        } else {
+            JOptionPane.showMessageDialog(this, "The book couldn't be updated");
+          
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
