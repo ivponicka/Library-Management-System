@@ -5,9 +5,13 @@
 package com.mycompany.library.management.system.JFrame;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -17,10 +21,10 @@ import javax.swing.table.TableModel;
  */
 public class ManageBooks extends javax.swing.JFrame {
     
-  //  int bookID;
-  //  String bookName;
-  //  String bookAuthor;
- //   int bookQuantity;
+    int bookID;
+    String bookName;
+    String bookAuthor;
+   int bookQuantity;
     DefaultTableModel model;
 
     /**
@@ -55,6 +59,42 @@ public class ManageBooks extends javax.swing.JFrame {
         }
         
     }
+    
+    public boolean addBook(){
+        boolean isAdded = false;
+        bookID = Integer.parseInt(book_id.getText());
+        bookName = book_name.getText();
+        bookAuthor = book_author.getText();
+        bookQuantity = Integer.parseInt(quantity.getText());
+        
+        try{
+            Connection con = DBConnection.getConnection();
+            String sql =  "insert into book_details values(?,?,?,?)";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, bookID);
+            statement.setString(2, bookName);
+            statement.setString(3, bookAuthor);
+            statement.setInt(4, bookQuantity);
+            
+            int rowCount = statement.executeUpdate();
+            
+            if(rowCount >0){
+                isAdded = true;
+            } else{
+                isAdded = false;
+            }
+            
+        } catch (SQLException e){
+            System.out.print(e);
+        }
+        
+        return isAdded;
+    }
+    
+    public void clearTable(){
+        DefaultTableModel model = (DefaultTableModel) books_details_table.getModel();
+       model.setRowCount(0);
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,8 +117,8 @@ public class ManageBooks extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         book_author = new app.bolivia.swing.JCTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         books_details_table = new rojerusan.RSTableMetro();
@@ -178,16 +218,6 @@ public class ManageBooks extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(51, 51, 51));
-        jButton2.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Update");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jButton3.setBackground(new java.awt.Color(51, 51, 51));
         jButton3.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,6 +225,16 @@ public class ManageBooks extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(51, 51, 51));
+        jButton4.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Update");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -224,7 +264,7 @@ public class ManageBooks extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(50, 50, 50)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(113, 113, 113)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -264,7 +304,7 @@ public class ManageBooks extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
                 .addContainerGap(189, Short.MAX_VALUE))
@@ -342,12 +382,15 @@ public class ManageBooks extends javax.swing.JFrame {
     }//GEN-LAST:event_book_authorFocusLost
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        if(addBook() == true){
+        JOptionPane.showMessageDialog(this, "Added a new book");
+        clearTable();
+        displayBooks();
+        } else {
+        JOptionPane.showMessageDialog(this, "Book couldn't be added");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -365,6 +408,10 @@ public class ManageBooks extends javax.swing.JFrame {
         book_author.setText(model.getValueAt(rowNumber, 2).toString());
         quantity.setText(model.getValueAt(rowNumber, 3).toString());
     }//GEN-LAST:event_books_details_tableMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,8 +454,8 @@ public class ManageBooks extends javax.swing.JFrame {
     private app.bolivia.swing.JCTextField book_name;
     private rojerusan.RSTableMetro books_details_table;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
