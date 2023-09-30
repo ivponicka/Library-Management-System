@@ -115,10 +115,11 @@ public class ViewAllData extends javax.swing.JFrame {
         date_to = new rojeru_san.componentes.RSDateChooser();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         table_details_issues = new rojerusan.RSTableMetro();
+        showalldata_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -161,16 +162,16 @@ public class ViewAllData extends javax.swing.JFrame {
         jLabel24.setText("From:");
         jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Search");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBackground(new java.awt.Color(102, 102, 102));
+        jButton2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 130, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 140, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 250));
 
@@ -193,17 +194,33 @@ public class ViewAllData extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 990, 230));
 
+        showalldata_button.setBackground(new java.awt.Color(102, 102, 102));
+        showalldata_button.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        showalldata_button.setForeground(new java.awt.Color(255, 255, 255));
+        showalldata_button.setText("Show all data");
+        showalldata_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showalldata_buttonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(showalldata_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 230, 30));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-140, 230, 1380, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         clearData();   
-        datesSearch();
+    private void showalldata_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showalldata_buttonActionPerformed
+        clearData();   
+        displayData();
           
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_showalldata_buttonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       clearData(); 
+       datesSearch();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,7 +260,7 @@ public class ViewAllData extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.componentes.RSDateChooser date_from;
     private rojeru_san.componentes.RSDateChooser date_to;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel8;
@@ -251,6 +268,7 @@ public class ViewAllData extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JButton showalldata_button;
     private rojerusan.RSTableMetro table_details_issues;
     // End of variables declaration//GEN-END:variables
 }
