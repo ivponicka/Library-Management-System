@@ -2,8 +2,7 @@ The Library Management Program in Java provides a comprehensive platform for lib
 
 Homepage
 
-![homepage](https://github.com/ivponicka/Library-Management-System/assets/56002673/6ba8dbc7-df18-4a22-b194-1a63102067ec)
-
+![homepage](https://github.com/ivponicka/Library-Management-System/assets/56002673/321c4179-4fde-46c5-97f1-d5f2c18573f6)
 
 Manage books
 
